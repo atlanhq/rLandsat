@@ -1,5 +1,6 @@
 # this script contains supporting functions, which are needed to run the other functions in rLandsat
 
+# =================== ESPA ====================
 # to return the stored username and password, if not saved then asks for user input if interactive
 espa_get_creds <- function(){
   username <- Sys.getenv('espa_username')
@@ -27,21 +28,6 @@ espa_get_creds <- function(){
 # to get the date of order from order id
 order_date = function(order_id){
   return(as.Date(gsub("(.*\\-)([[:digit:]]{8})(.*)", "\\2", order_id),"%m%d%Y"))
-}
-
-# to get a named vector of path and row from landsat8 collection-1 product_id
-product_row_path = function(product_id){
-  rowpath = gsub("(.*_)([[:digit:]]{6})(_)(.*)", "\\2",product_id)
-  path = substr(rowpath, 1,3)
-  row = substr(rowpath, 4,6)
-  return(c(path = path, row = row))
-}
-
-# to get a named vector of capture_date and process_date from product_id
-product_date = function(product_id){
-  capture_date = as.Date(gsub("(.*_)([[:digit:]]{6})(_)([[:digit:]]{8})(_)([[:digit:]]{8})(_)().*", "\\4",product_id),"%Y%m%d")
-  process_date = as.Date(gsub("(.*_)([[:digit:]]{6})(_)([[:digit:]]{8})(_)([[:digit:]]{8})(_)().*", "\\6",product_id),"%Y%m%d")
-  return(c(capture_date = as.character(capture_date), process_date = as.character(process_date)))
 }
 
 # to get the list of orders for a date range
@@ -84,4 +70,51 @@ espa_list_orders <- function(min_date = NULL, max_date = NULL,  host = 'https://
     result_list = as.character(result_list$result_list)
   }
   return(result_list)
+}
+
+# =================== SAT API ===================
+
+# sat-api-express wrapper for landsat8
+satapilsat8 <- function(date_from = "2013-04-01", date_to = Sys.Date(), limit = 10000, path = NULL, row = NULL){
+  if(is.null(row) | is.null(path)){
+    link = paste0('https://api.developmentseed.org/satellites/?limit=',limit,'$satellite_name=landsat-8&date_from=',date_from,'&date_to=',date_to)
+    result = GET(link)
+  } else{
+    link = paste0('https://api.developmentseed.org/satellites/?limit=',limit,'$satellite_name=landsat-8&date_from=',date_from,'&date_to=',date_to,'&path=',path,'&row=',row)
+    result = GET(link)
+  }
+  if(result$status_code != 200){
+    print(paste("Error:",result$status_code))
+  }
+  return(result)
+}
+
+# =================== GENERIC ===================
+
+# to get a named vector of path and row from landsat8 collection-1 product_id
+product_row_path = function(product_id){
+  rowpath = gsub("(.*_)([[:digit:]]{6})(_)(.*)", "\\2",product_id)
+  path = substr(rowpath, 1,3)
+  row = substr(rowpath, 4,6)
+  return(c(path = path, row = row))
+}
+
+# to get a named vector of capture_date and process_date from product_id
+product_date = function(product_id){
+  capture_date = as.Date(gsub("(.*_)([[:digit:]]{6})(_)([[:digit:]]{8})(_)([[:digit:]]{8})(_)().*", "\\4",product_id),"%Y%m%d")
+  process_date = as.Date(gsub("(.*_)([[:digit:]]{6})(_)([[:digit:]]{8})(_)([[:digit:]]{8})(_)().*", "\\6",product_id),"%Y%m%d")
+  return(c(capture_date = as.character(capture_date), process_date = as.character(process_date)))
+}
+
+# function to get dataframe after GET
+GEToutput <- function(result, output_col = "results", isJSON = TRUE){
+  if(isJSON){
+    result = fromJSON(rawToChar(result$content))
+    if(!is.null(output_col)){
+      result = flatten(as.data.frame(result[output_col]))
+    }
+  } else{
+    result = rawToChar(result$content)
+  }
+  return(result)
 }
