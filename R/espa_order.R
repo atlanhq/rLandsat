@@ -45,6 +45,7 @@ espa_order <- function(input_ids, product, file_format = "gtiff", resampling_met
                        standard_parallel_1 = 29.5,central_meridian = -96.0,datum = "nad83", latitude_of_origin = 23.0,
                        standard_parallel_2 = 45.5 , false_northing = 0, false_easting = 0,
                        host = 'https://espa.cr.usgs.gov/api/v1/', username = NULL, password = NULL){
+
   # getting the username and password from global environment if not specified
   if(is.null(username) | is.null(password)){
     username = tryCatch(espa_get_creds()[1], error = function(e) stop("Please set your espa-api creds in espa_creds()"))

@@ -21,17 +21,20 @@
 landsat_search <- function(min_date = "2017-03-01", max_date = Sys.Date(),
                            country = NULL, path_master = NULL,
                            row_master = NULL,source = "sat-api"){
+  require("httr")
+  require("jsonlite")
+  require("dplyr")
   if(source == "sat-api"){
     if(!is.null(country)){
 
       data("world_rowpath")
       country_rp = world_rowpath
-      c_row = which(str_to_lower(country_rp$ctry_name) %in% str_to_lower(country))
+      c_row = which(stringr::str_to_lower(country_rp$ctry_name) %in% stringr::str_to_lower(country))
       # if country not found
       if(length(c_row) == 0){
         # cleaning country
         country_rp$ctry_name = gsub("^Federal\\sRepublic\\sof\\s|^Republic\\sof\\s","", country_rp$ctry_name)
-        c_row = which(str_to_lower(country_rp$ctry_name) %in% str_to_lower(country))
+        c_row = which(stringr::str_to_lower(country_rp$ctry_name) %in% stringr::str_to_lower(country))
       }
       # if still no country found
       if(length(c_row) == 0){
@@ -96,13 +99,13 @@ landsat_search <- function(min_date = "2017-03-01", max_date = Sys.Date(),
       # If entire data before Collection
       temp = list.files(path = gsub("(.*\\/)(.*)","\\1",tempfile()), pattern = "preaws*", full.names = T)
       if(length(temp) == 1){
-        print("Getting pre-downloaded data from aws")
-        aws_list_old <- read_csv(gzfile(temp))
+        print("getting pre-downloaded data from aws")
+        aws_list_old <- readr::read_csv(gzfile(temp))
       } else{
         temp <- tempfile(pattern = "preaws")
-        print("Getting meta data from AWS")
+        print("getting meta data from AWS")
         download.file("https://landsat-pds.s3.amazonaws.com/scene_list.gz", destfile = temp)
-        aws_list_old <- read_csv(gzfile(temp))
+        aws_list_old <- readr::read_csv(gzfile(temp))
       }
       aws_list_old = aws_list_old[!duplicated(aws_list_old[,-which(names(aws_list_old) == "cloudCover")]),]
       aws_list_old$date = as.Date(substr(aws_list_old$acquisitionDate, 1, 10))
@@ -112,13 +115,13 @@ landsat_search <- function(min_date = "2017-03-01", max_date = Sys.Date(),
       # If entire data after Collection
       temp = list.files(path = gsub("(.*\\/)(.*)","\\1",tempfile()), pattern = "aws_c1*", full.names = T)
       if(length(temp) == 1){
-        print("Getting pre-downloaded data from aws")
-        aws_list <- read_csv(gzfile(temp))
+        print("getting pre-downloaded data from aws")
+        aws_list <- readr::read_csv(gzfile(temp))
       } else{
         temp <- tempfile(pattern = "aws_c1")
-        print("Getting meta data from AWS")
+        print("getting meta data from AWS")
         download.file("https://landsat-pds.s3.amazonaws.com/c1/L8/scene_list.gz", destfile = temp)
-        aws_list <- read_csv(gzfile(temp))
+        aws_list <- readr::read_csv(gzfile(temp))
       }
       aws_list = aws_list[!duplicated(aws_list[,-which(names(aws_list) == "cloudCover")]),]
       aws_list$date = as.Date(substr(aws_list$acquisitionDate, 1, 10))
@@ -130,13 +133,13 @@ landsat_search <- function(min_date = "2017-03-01", max_date = Sys.Date(),
       # If data both pre and post Collection
       temp = list.files(path = gsub("(.*\\/)(.*)","\\1",tempfile()), pattern = "preaws*", full.names = T)
       if(length(temp) == 1){
-        print("Getting pre-downloaded data from aws")
-        aws_list_old <- read_csv(gzfile(temp))
+        print("getting pre-downloaded data from aws")
+        aws_list_old <- readr::read_csv(gzfile(temp))
       } else{
         temp <- tempfile(pattern = "preaws")
-        print("Getting meta data from AWS")
+        print("getting meta data from AWS")
         download.file("https://landsat-pds.s3.amazonaws.com/scene_list.gz", destfile = temp)
-        aws_list_old <- read_csv(gzfile(temp))
+        aws_list_old <- readr::read_csv(gzfile(temp))
       }
       aws_list_old = aws_list_old[!duplicated(aws_list_old[,-which(names(aws_list_old) == "cloudCover")]),]
       aws_list_old$date = as.Date(substr(aws_list_old$acquisitionDate, 1, 10))
@@ -144,13 +147,13 @@ landsat_search <- function(min_date = "2017-03-01", max_date = Sys.Date(),
       aws_list_old = StandardColnames(aws_list_old)
       temp = list.files(path = gsub("(.*\\/)(.*)","\\1",tempfile()), pattern = "aws_c1*", full.names = T)
       if(length(temp) == 1){
-        print("Getting pre-downloaded data from aws")
-        aws_list <- read_csv(gzfile(temp))
+        print("getting pre-downloaded data from aws")
+        aws_list <- readr::read_csv(gzfile(temp))
       } else{
         temp <- tempfile(pattern = "aws_c1")
-        print("Getting meta data from AWS")
+        print("getting meta data from AWS")
         download.file("https://landsat-pds.s3.amazonaws.com/c1/L8/scene_list.gz", destfile = temp)
-        aws_list <- read_csv(gzfile(temp))
+        aws_list <- readr::read_csv(gzfile(temp))
       }
       aws_list = aws_list[!duplicated(aws_list[,-which(names(aws_list) == "cloudCover")]),]
       aws_list$date = as.Date(substr(aws_list$acquisitionDate, 1, 10))
@@ -167,12 +170,12 @@ landsat_search <- function(min_date = "2017-03-01", max_date = Sys.Date(),
       # read file with country and row-path combination
       data("world_rowpath")
       country_rp = world_rowpath
-      c_row = which(str_to_lower(country_rp$ctry_name) %in% str_to_lower(country))
+      c_row = which(stringr::str_to_lower(country_rp$ctry_name) %in% stringr::str_to_lower(country))
       # if country not found
       if(length(c_row) == 0){
         # cleaning country
         country_rp$ctry_name = gsub("^Federal\\sRepublic\\sof\\s|^Republic\\sof\\s","", country_rp$ctry_name)
-        c_row = which(str_to_lower(country_rp$ctry_name) %in% str_to_lower(country))
+        c_row = which(stringr::str_to_lower(country_rp$ctry_name) %in% stringr::str_to_lower(country))
       }
       # if still no country found
       if(length(c_row) == 0){

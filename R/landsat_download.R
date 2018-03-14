@@ -13,6 +13,7 @@
 #' @examples landsat_download("https://edclpdsftp.cr.usgs.gov/orders/espa-order_id1.tar.gz", dest_file = getwd())
 
 landsat_download <- function(download_url, entity_id = NULL, folder_wise = FALSE, dest_file = NULL){
+
   if(is.null(dest_file)){
     if(interactive()){
       dest_yn = readline(prompt = "No destination folder selected. Download in the current directory? [y/n]")
@@ -44,7 +45,7 @@ landsat_download <- function(download_url, entity_id = NULL, folder_wise = FALSE
       }
       failed = suppressWarnings(tryCatch(download.file(download_url[i], paste0(dest_file,"/",entity_id[i],"/",gsub("(.*\\/)(.*)","\\2",download_url[i]))),
                                          error = function(e) {c(failed, i)}))
-      progress((i/length(download_url))*100)
+      svMisc::progress((i/length(download_url))*100)
     }
   }
   return(failed)
