@@ -192,7 +192,7 @@ landsat_search <- function(min_date = "2017-03-01", max_date = Sys.Date(),
       } else {
         stop("Error: No rows found")
       }
-    } else if(!is.null(path_master) & length(row_path)>0){
+    } else if(!is.null(path_master) & length(row_master)>0){
       row_path = paste0(path_master,"-",row_master)
       # if no country selected and row_path combination input
       aws_row = which(aws_list$location_id %in% row_path)
