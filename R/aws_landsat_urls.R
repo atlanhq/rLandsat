@@ -10,9 +10,9 @@
 #' @export
 #'
 #' @examples index_url = "https://s3-us-west-2.amazonaws.com/landsat-pds/c1/L8/148/047/LC08_L1TP_148047_20170404_20170414_01_T1/index.html"
-#' temp = landsat_urls(index_url, dest_file = getwd())
+#' temp = aws_landsat_urls(index_url, dest_file = getwd())
 
-landsat_urls <- function(index_html_url, TIFtxtOnly = TRUE, band = NULL, dest_file = NULL, scrape = FALSE){
+aws_landsat_urls <- function(index_html_url, TIFtxtOnly = TRUE, band = NULL, dest_file = NULL, scrape = FALSE){
   require(rvest)
   url_all = list()
   if(!is.null(band)){
