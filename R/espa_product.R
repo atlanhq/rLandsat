@@ -1,8 +1,3 @@
-# checking the products available for product ids. First checks if username password correct. If not returns NULL
-## returns a list:
-# master = dataframe with product ids and availability
-# no_product = vector of product_ids which are incorrect
-# sample_message = a list of output msg from the espa api
 #' Check Available Products for given Product-IDs
 #'
 #' @param input_ids vector of product ids for which available products are needed
