@@ -44,3 +44,44 @@ product_date = function(product_id){
   return(c(capture_date = as.character(capture_date), process_date = as.character(process_date)))
 }
 
+# to get the list of orders for a date range
+## returns a list of order ids
+## if API fails then returns NULL
+espa_list_orders <- function(min_date = NULL, max_date = NULL,  host = 'https://espa.cr.usgs.gov/api/v1/', username = NULL, password = NULL){
+  # getting the username and password from global environment if not specified
+  if(is.null(username) | is.null(password)){
+    username = tryCatch(espa_get_creds()[1], error = function(e) stop("Please set your espa-api creds in espa_creds()"))
+    password = tryCatch(espa_get_creds()[2], error = function(e) stop("Please set your espa-api creds in espa_creds()"))
+  }
+  # check if username and password and if API working
+  if(!espa_user(host = host, username = username, password = password)){
+    return(NULL)
+  }
+  list_url = paste0(host, "list-orders")
+  result = tryCatch(GET(list_url, authenticate(username, password)), error = function(e) FALSE)
+  if(is.logical(result)){
+    cat(paste0("API Connection Failed for order,",order_id[i]))
+    return(NULL)
+  }
+  if(result$status_code == 200){
+    result_list = fromJSON(rawToChar(result$content))
+  } else {
+    cat(paste0("API Connection Failed for order,",order_id[i]))
+    return(NULL)
+  }
+
+  # take subset of order list is date specified
+  if(!is.null(min_date) | !is.null(max_date)){
+    result_list = as.data.frame(result_list)
+    # getting the date of the orders from the order ids
+    result_list$ordered_date = as.Date(order_date(result_list$result_list))
+    if(!is.null(min_date)){
+      result_list = result_list[which(result_list$ordered_date>= as.Date(min_date)),]
+    }
+    if(!is.null(max_date)){
+      result_list = result_list[which(result_list$ordered_date<= as.Date(max_date)),]
+    }
+    result_list = as.character(result_list$result_list)
+  }
+  return(result_list)
+}
