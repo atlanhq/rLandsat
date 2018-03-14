@@ -3,4 +3,5 @@
 export(espa_creds)
 export(espa_order)
 export(espa_products)
+export(espa_status)
 export(espa_user)
