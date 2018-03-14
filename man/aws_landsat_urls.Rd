@@ -2,7 +2,7 @@
 % Please edit documentation in R/aws_landsat_urls.R
 \name{aws_landsat_urls}
 \alias{aws_landsat_urls}
-\title{Getting Landsat8 Raw Files URL from index.html Files}
+\title{Getting Landsat8 Raw Files URL from AWS index.html Files}
 \usage{
 aws_landsat_urls(index_html_url, TIFtxtOnly = TRUE, band = NULL,
   dest_file = NULL, scrape = FALSE)
@@ -22,7 +22,7 @@ aws_landsat_urls(index_html_url, TIFtxtOnly = TRUE, band = NULL,
 dataframe with download urls
 }
 \description{
-Getting Landsat8 Raw Files URL from index.html Files
+Getting Landsat8 Raw Files URL from AWS index.html Files
 }
 \examples{
 index_url = "https://s3-us-west-2.amazonaws.com/landsat-pds/c1/L8/148/047/LC08_L1TP_148047_20170404_20170414_01_T1/index.html"
