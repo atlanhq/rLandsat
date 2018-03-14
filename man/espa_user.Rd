@@ -2,7 +2,7 @@
 % Please edit documentation in R/espa_user.R
 \name{espa_user}
 \alias{espa_user}
-\title{Validate espa credentials}
+\title{Validate Espa Credentials}
 \usage{
 espa_user(host = "https://espa.cr.usgs.gov/api/v1/", username = NULL,
   password = NULL)
@@ -18,7 +18,7 @@ espa_user(host = "https://espa.cr.usgs.gov/api/v1/", username = NULL,
 logical. TRUE if user is active, FALSE if credentials are wrong or API is unresponsive
 }
 \description{
-To check espa credentials and if espa-api is responding. Suggest to use espa_creds() function to store your credentials before running this function
+To check espa credentials and if espa-api is responding. Suggest to use \code{\link{espa_creds}} function to store your credentials before running this function
 }
 \examples{
 # inputting the credentials

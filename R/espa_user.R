@@ -1,7 +1,7 @@
 
 
-#' Validate espa credentials
-#' @description To check espa credentials and if espa-api is responding. Suggest to use espa_creds() function to store your credentials before running this function
+#' Validate Espa Credentials
+#' @description To check espa credentials and if espa-api is responding. Suggest to use \code{\link{espa_creds}} function to store your credentials before running this function
 #' @param host the api call host. Default set to espa v1 web api
 #' @param username default NULL, which fetches the username from the global environment. If defined otherwise, will run the api with the provided details
 #' @param password default NULL, which fetches the password from the global environment. If defined otherwise, will run the api with the provided details

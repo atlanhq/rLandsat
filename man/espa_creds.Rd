@@ -2,7 +2,7 @@
 % Please edit documentation in R/espa_creds.R
 \name{espa_creds}
 \alias{espa_creds}
-\title{Input and save esap-api Credentials}
+\title{Input and Save esap-api Credentials}
 \usage{
 espa_creds(username, password)
 }
