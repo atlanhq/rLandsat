@@ -1,4 +1,4 @@
-#' Getting Landsat8 Raw Files URL from html.index Files
+#' Getting Landsat8 Raw Files URL from index.html Files
 #'
 #' @param index_html_url index.html url for which download urls are needed
 #' @param TIFtxtOnly logical. To download only the TIF and txt files or all files
