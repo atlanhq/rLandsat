@@ -27,7 +27,7 @@ landsat_search <- function(min_date = "2017-03-01", max_date = Sys.Date(),
   if(source == "sat-api"){
     if(!is.null(country)){
 
-      data("world_rowpath")
+      data("world_rowpath", envir = environment(landsat_search))
       country_rp = world_rowpath
       c_row = which(stringr::str_to_lower(country_rp$ctry_name) %in% stringr::str_to_lower(country))
       # if country not found
@@ -168,7 +168,7 @@ landsat_search <- function(min_date = "2017-03-01", max_date = Sys.Date(),
     # ====== subsetting for country selected, if any ======
     if(!is.null(country)){
       # read file with country and row-path combination
-      data("world_rowpath")
+      data("world_rowpath", envir = environment(landsat_search))
       country_rp = world_rowpath
       c_row = which(stringr::str_to_lower(country_rp$ctry_name) %in% stringr::str_to_lower(country))
       # if country not found
@@ -206,6 +206,7 @@ landsat_search <- function(min_date = "2017-03-01", max_date = Sys.Date(),
       }
     }
     print(paste("Total rows :",nrow(aws_list)))
+    rm(world_rowpath)
     return(aws_list)
   }
 

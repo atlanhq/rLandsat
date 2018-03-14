@@ -2,9 +2,9 @@
 
 # =================== ESPA ====================
 # to return the stored username and password, if not saved then asks for user input if interactive
-espa_GET_creds <- function(){
-  username <- Sys.GETenv('espa_username')
-  password <- Sys.GETenv('espa_password')
+espa_get_creds <- function(){
+  username <- Sys.getenv('espa_username')
+  password <- Sys.getenv('espa_password')
   if(!identical(username, "") & !identical(password, "")) return(c(username, password))
 
   if(!interactive()) {
@@ -36,8 +36,8 @@ order_date = function(order_id){
 espa_list_orders <- function(min_date = NULL, max_date = NULL,  host = 'https://espa.cr.usgs.gov/api/v1/', username = NULL, password = NULL){
   # GETting the username and password from global environment if not specified
   if(is.null(username) | is.null(password)){
-    username = tryCatch(espa_GET_creds()[1], error = function(e) stop("Please set your espa-api creds in espa_creds()"))
-    password = tryCatch(espa_GET_creds()[2], error = function(e) stop("Please set your espa-api creds in espa_creds()"))
+    username = tryCatch(espa_get_creds()[1], error = function(e) stop("Please set your espa-api creds in espa_creds()"))
+    password = tryCatch(espa_get_creds()[2], error = function(e) stop("Please set your espa-api creds in espa_creds()"))
   }
   # check if username and password and if API working
   if(!espa_user(host = host, username = username, password = password)){
