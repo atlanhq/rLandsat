@@ -8,19 +8,13 @@
 #'
 #' @return logical. TRUE if user is active, FALSE if credentials are wrong or API is unresponsive
 #' @export
-#'
+#' @import "httr" "jsonlite" "dplyr" "readr" "stringr" "data.table"
 #' @examples # inputting the credentials
 #' espa_creds("your_espaname", "secret_password")
 #' # checking if the user is valid
 #' espa_user() # returns FALSE
 #'
 espa_user <- function(host = 'https://espa.cr.usgs.gov/api/v1/', username = NULL, password = NULL){
-  suppressWarnings(suppressMessages(require("httr")))
-  suppressWarnings(suppressMessages(require("jsonlite")))
-  suppressWarnings(suppressMessages(require("dplyr")))
-  suppressWarnings(suppressMessages(require("readr")))
-  suppressWarnings(suppressMessages(require("stringr")))
-  suppressWarnings(suppressMessages(require("data.table")))
   # getting the username and password from global environment if not specified
   if(is.null(username) | is.null(password)){
     username = tryCatch(espa_get_creds()[1], error = function(e) stop("Please set your espa-api creds in espa_creds()"))

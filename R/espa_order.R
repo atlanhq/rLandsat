@@ -24,7 +24,7 @@
 #' \item{product_available}{dataframe with product ids and availability}
 #' \item{query}{the json body sent in POST api}
 #' @export
-#'
+#' @import "httr" "jsonlite" "dplyr" "readr" "stringr" "data.table"
 #' @examples # input the credentials, if not defined earlier
 #' espa_creds("your_espaname", "secret_password")
 #'
