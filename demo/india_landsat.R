@@ -17,8 +17,9 @@ result_order = espa_order(result$product_id, product = c("sr","sr_ndvi"),
 order_id = result_order$order_details$orderid
 
 # getting order status
-durl = espa_status(order_id = order_id)
+durl = espa_status(order_id = order_id, getSize = TRUE)
 downurl = durl$order_details
+paste0("Total Size of Order: ", round(sum(downurl$size)/(1000^3), 2), "GB")
 
 # download; after the order is complete
 landsat_download(download_url = downurl$product_dload_url, dest_file = getwd())
