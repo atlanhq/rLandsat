@@ -21,13 +21,10 @@
 landsat_search <- function(min_date = "2017-03-01", max_date = Sys.Date(),
                            country = NULL, path_master = NULL,
                            row_master = NULL,source = "sat-api"){
-  require("httr")
-  require("jsonlite")
-  require("dplyr")
   if(source == "sat-api"){
     if(!is.null(country)){
 
-      data("world_rowpath", envir = environment(landsat_search))
+      #data("world_rowpath", envir = environment(landsat_search))
       country_rp = world_rowpath
       c_row = which(stringr::str_to_lower(country_rp$ctry_name) %in% stringr::str_to_lower(country))
       # if country not found
