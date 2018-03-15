@@ -76,7 +76,7 @@ espa_list_orders <- function(min_date = NULL, max_date = NULL,  host = 'https://
 
 # sat-api-express wrapper for landsat8
 satapilsat8 <- function(date_from = "2013-04-01", date_to = Sys.Date(), limit = 10000, path = NULL, row = NULL){
-  library(httr)
+  suppressWarnings(suppressMessages(library(httr)))
   if(is.null(row) | is.null(path)){
     link = paste0('https://api.developmentseed.org/satellites/?limit=',limit,'$satellite_name=landsat-8&date_from=',date_from,'&date_to=',date_to)
     result = GET(link)
@@ -109,7 +109,7 @@ product_date = function(product_id){
 
 # function to GET dataframe after GET
 GEToutput <- function(result, output_col = "results", isJSON = TRUE){
-  library(jsonlite)
+  suppressWarnings(suppressMessages(library(jsonlite)))
   if(isJSON){
     result = fromJSON(rawToChar(result$content))
     if(!is.null(output_col)){
@@ -119,4 +119,18 @@ GEToutput <- function(result, output_col = "results", isJSON = TRUE){
     result = rawToChar(result$content)
   }
   return(result)
+}
+
+# to standardize colnames
+StandardColnames <- function (dataframe){
+  suppressWarnings(suppressMessages(library(stringr)))
+  colnames(dataframe) = gsub("([[:upper:]])([[:upper:]][[:lower:]])",
+                             "\\\\1\\\\_\\\\2", colnames(dataframe))
+  colnames(dataframe) = gsub("([[:lower:]])([[:upper:]])",
+                             "\\\\1\\\\_\\\\2", colnames(dataframe))
+  colnames(dataframe) = gsub("[[:punct:]]|\\\\s", "_", colnames(dataframe))
+  colnames(dataframe) = gsub("\\\\_+", "_", colnames(dataframe))
+  colnames(dataframe) = gsub("\\\\_$|^\\\\_", "", colnames(dataframe))
+  colnames(dataframe) = str_to_lower(colnames(dataframe))
+  return(dataframe)
 }
