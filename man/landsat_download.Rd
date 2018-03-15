@@ -23,7 +23,7 @@ vector of failed urls
 Downlaod Landsat Files from URL
 }
 \details{
-Caution: use entity_id and folder_wise ONLY in case of downloading the individual bands (like from AWS)
+Caution: use entity_id and folder_wise ONLY in case of downloading the individual bands (like from AWS). Get the downlaod urls from espa functions in this library. View the demo
 }
 \examples{
 landsat_download("https://edclpdsftp.cr.usgs.gov/orders/espa-order_id1.tar.gz", dest_file = getwd())
