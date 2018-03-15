@@ -14,7 +14,7 @@
 #' @details for path_master and row_master input is in a pair. For example: If we want path/row of :  (147,47) , (147,48) then path_master = c(147, 147), row_master = c(47,48)
 #'
 #' @export
-#'
+#' @import "httr" "jsonlite" "dplyr" "readr" "stringr"
 #' @examples result = landsat_search(min_date = "2017-03-01", max_date = Sys.Date(), country = "India")
 #'
 

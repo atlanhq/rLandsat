@@ -8,7 +8,7 @@
 #'
 #' @return logical. TRUE if user is active, FALSE if credentials are wrong or API is unresponsive
 #' @export
-#' @import "httr" "jsonlite" "dplyr" "readr" "stringr" "data.table"
+#' @import "httr" "jsonlite" "dplyr" "readr" "stringr"
 #' @examples # inputting the credentials
 #' espa_creds("your_espaname", "secret_password")
 #' # checking if the user is valid
