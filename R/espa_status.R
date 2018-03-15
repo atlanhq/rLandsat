@@ -8,6 +8,7 @@
 #' @param order_id vector of order ids for which status and download url is needed
 #' @param min_date if order_id is NULL, define the starting date from which order ids need to be fetched
 #' @param max_date if order_id is NULL, define the ending date till which order ids need to be fetched
+#' @param getSize logical. if the status is completed for the entire order, then should the file size be calculated. (Output size in Bytes)
 #' @param host the api call host. Default set to espa v1 web api
 #' @param username default NULL, which fetches the username from the global environment. If defined otherwise, will run the api with the provided details
 #' @param password default NULL, which fetches the password from the global environment. If defined otherwise, will run the api with the provided details
@@ -24,7 +25,7 @@
 #' result = espa_status()
 #' result = result$order_details # getting the dataframe from the list
 
-espa_status <- function(order_id = NULL, min_date = NULL, max_date = NULL,
+espa_status <- function(order_id = NULL, min_date = NULL, max_date = NULL, getSize = FALSE,
                         host = 'https://espa.cr.usgs.gov/api/v1/', username = NULL, password = NULL){
   # getting the username and password from global environment if not specified
   if(is.null(username) | is.null(password)){
@@ -77,6 +78,17 @@ espa_status <- function(order_id = NULL, min_date = NULL, max_date = NULL,
     order_details = bind_rows(order_details)
     if(length(unique(order_details$status)) ==1){
       cat(paste("Status of your order is", unique(order_details$status),"\n"))
+      if(unique(order_details$status) == "complete" & getSize){
+        print("Getting file sizes, might take time. Hold on!")
+        order_details$size = NA
+        url = order_details$product_dload_url
+        for(i in 1:length(url)){
+          print(i)
+          xx = getURL(url[i], nobody=1L, header=1L)
+          order_details$size[i] = strsplit(xx, "\r\n")[[1]][5]
+        }
+        order_details$size = as.numeric(gsub("(.*\\s)(.*)", "\\2", order_details$size))
+      }
     }
     return(list(order_details = order_details, wrong_order_id = wrong_order_id))
   } else {

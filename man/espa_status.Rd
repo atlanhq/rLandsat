@@ -5,8 +5,8 @@
 \title{Get Landsat Order Status and Download URL}
 \usage{
 espa_status(order_id = NULL, min_date = NULL, max_date = NULL,
-  host = "https://espa.cr.usgs.gov/api/v1/", username = NULL,
-  password = NULL)
+  getSize = FALSE, host = "https://espa.cr.usgs.gov/api/v1/",
+  username = NULL, password = NULL)
 }
 \arguments{
 \item{order_id}{vector of order ids for which status and download url is needed}
@@ -14,6 +14,8 @@ espa_status(order_id = NULL, min_date = NULL, max_date = NULL,
 \item{min_date}{if order_id is NULL, define the starting date from which order ids need to be fetched}
 
 \item{max_date}{if order_id is NULL, define the ending date till which order ids need to be fetched}
+
+\item{getSize}{logical. if the status is completed for the entire order, then should the file size be calculated. (Output size in Bytes)}
 
 \item{host}{the api call host. Default set to espa v1 web api}
 
