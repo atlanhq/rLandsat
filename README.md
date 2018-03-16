@@ -5,7 +5,7 @@ Easily search and download landsat8 data from R (internally using sat-api, espa-
 ### About Landsat8 ###
 Landsat 8 - Operational Land Imager (OLI) and Thermal Infrared Sensor (TIRS) imagery consist of nine spectral bands with a spatial resolution of 30 meters for Bands 1 to 7 and 9. New band 1 (ultra-blue) is useful for coastal and aerosol studies. Band 9 is useful for cirrus cloud detection. The resolution for Band 8 (panchromatic) is 15 meters. Thermal bands 10 and 11 are useful in providing more accurate surface temperatures and are collected at 100 meters.
 
-*You might want to read :*
+**You might want to read :**
 * About the Landsat Collection (Pre-Collection and Collection-1) [here](https://landsat.usgs.gov/landsat-collections). This impacts the data on AWS/Google servers, as they have pre-collection data per 5/1/2017 and collection-1 post that. Hence using data from ESPA is suggested as they have only Collection-1 data for the entire time period. This library considers this change.
 * About the different products available in ESPA (eg, SR (Surface Reflectance), TOA (Top of Atmosphere), BT (Brightness Temperature), Spectral Indices) and why using these are better than the digital numbers (DN) prodived by AWS/GoogleServers.
 
