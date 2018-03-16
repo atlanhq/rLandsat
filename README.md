@@ -20,7 +20,7 @@ Landsat 8 - Operational Land Imager (OLI) and Thermal Infrared Sensor (TIRS) ima
 
 * **landsat_download** A small function to download multiple urls using download.file function. If each band is being downloaded individually, instead of a zip file (in case of data from AWS) then this function will create a folder for each tile, grouping the bands.
 
-* Few other smaller functions and features/options are also available. Also check the demo script which downloads all the landsat8 data for India for Jan 2018. Use `?function_name` to know more about each function
+* Few other smaller functions and features/options are also available. Use `?function_name` to know more about each function. **Also check the demo script** which downloads all the landsat8 data for India for Jan 2018 in the demo folder, or run `demo("india_landsat")` in R post loading this library
 
 Please Note: To run any of the functions starting with *espa_* you need valid login credentials from [ESPA - LSRD](https://espa.cr.usgs.gov) and need to input it in your environment with `espa_creds(username, password)` for the functions to work properly
 
