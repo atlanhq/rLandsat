@@ -79,7 +79,7 @@ espa_status <- function(order_id = NULL, min_date = NULL, max_date = NULL, getSi
     if(length(unique(order_details$status)) ==1){
       cat(paste("Status of your order is", unique(order_details$status),"\n"))
       if(unique(order_details$status) == "complete" & getSize){
-        print("Getting file sizes, might take time. Hold on!")
+        cat("Getting file sizes, might take time. Hold on!")
         order_details$size = NA
         url = order_details$product_dload_url
         for(i in 1:length(url)){
