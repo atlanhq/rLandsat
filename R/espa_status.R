@@ -84,7 +84,7 @@ espa_status <- function(order_id = NULL, min_date = NULL, max_date = NULL, getSi
         url = order_details$product_dload_url
         for(i in 1:length(url)){
           print(i)
-          xx = getURL(url[i], nobody=1L, header=1L)
+          xx = RCurl::getURL(url[i], nobody=1L, header=1L)
           order_details$size[i] = strsplit(xx, "\r\n")[[1]][5]
         }
         order_details$size = as.numeric(gsub("(.*\\s)(.*)", "\\2", order_details$size))
