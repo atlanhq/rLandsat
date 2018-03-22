@@ -19,5 +19,4 @@ Imports:
     dplyr,
     readr,
     stringr,
-    data.table,
-    RCurl
+    data.table
