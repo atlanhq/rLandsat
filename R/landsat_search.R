@@ -96,11 +96,11 @@ landsat_search <- function(min_date = "2017-03-01", max_date = Sys.Date(),
       # If entire data before Collection
       temp = list.files(path = gsub("(.*\\/)(.*)","\\1",tempfile()), pattern = "preaws*", full.names = T)
       if(length(temp) == 1){
-        print("getting pre-downloaded data from aws")
+        cat("getting pre-downloaded data from aws\n")
         aws_list_old <- readr::read_csv(gzfile(temp))
       } else{
         temp <- tempfile(pattern = "preaws")
-        print("getting meta data from AWS")
+        cat("getting meta data from AWS\n")
         download.file("https://landsat-pds.s3.amazonaws.com/scene_list.gz", destfile = temp)
         aws_list_old <- readr::read_csv(gzfile(temp))
       }
@@ -112,11 +112,11 @@ landsat_search <- function(min_date = "2017-03-01", max_date = Sys.Date(),
       # If entire data after Collection
       temp = list.files(path = gsub("(.*\\/)(.*)","\\1",tempfile()), pattern = "aws_c1*", full.names = T)
       if(length(temp) == 1){
-        print("getting pre-downloaded data from aws")
+        cat("getting pre-downloaded data from aws\n")
         aws_list <- readr::read_csv(gzfile(temp))
       } else{
         temp <- tempfile(pattern = "aws_c1")
-        print("getting meta data from AWS")
+        cat("getting meta data from AWS\n")
         download.file("https://landsat-pds.s3.amazonaws.com/c1/L8/scene_list.gz", destfile = temp)
         aws_list <- readr::read_csv(gzfile(temp))
       }
@@ -130,11 +130,11 @@ landsat_search <- function(min_date = "2017-03-01", max_date = Sys.Date(),
       # If data both pre and post Collection
       temp = list.files(path = gsub("(.*\\/)(.*)","\\1",tempfile()), pattern = "preaws*", full.names = T)
       if(length(temp) == 1){
-        print("getting pre-downloaded data from aws")
+        cat("getting pre-downloaded data from aws \n")
         aws_list_old <- readr::read_csv(gzfile(temp))
       } else{
         temp <- tempfile(pattern = "preaws")
-        print("getting meta data from AWS")
+        cat("getting meta data from AWS \n")
         download.file("https://landsat-pds.s3.amazonaws.com/scene_list.gz", destfile = temp)
         aws_list_old <- readr::read_csv(gzfile(temp))
       }
@@ -144,11 +144,11 @@ landsat_search <- function(min_date = "2017-03-01", max_date = Sys.Date(),
       aws_list_old = StandardColnames(aws_list_old)
       temp = list.files(path = gsub("(.*\\/)(.*)","\\1",tempfile()), pattern = "aws_c1*", full.names = T)
       if(length(temp) == 1){
-        print("getting pre-downloaded data from aws")
+        cat("getting pre-downloaded data from aws\n")
         aws_list <- readr::read_csv(gzfile(temp))
       } else{
         temp <- tempfile(pattern = "aws_c1")
-        print("getting meta data from AWS")
+        cat("getting meta data from AWS\n")
         download.file("https://landsat-pds.s3.amazonaws.com/c1/L8/scene_list.gz", destfile = temp)
         aws_list <- readr::read_csv(gzfile(temp))
       }
@@ -165,7 +165,7 @@ landsat_search <- function(min_date = "2017-03-01", max_date = Sys.Date(),
     # ====== subsetting for country selected, if any ======
     if(!is.null(country)){
       # read file with country and row-path combination
-      data("world_rowpath", envir = environment(landsat_search))
+      #data("world_rowpath", envir = environment(landsat_search))
       country_rp = world_rowpath
       c_row = which(stringr::str_to_lower(country_rp$ctry_name) %in% stringr::str_to_lower(country))
       # if country not found
@@ -202,8 +202,7 @@ landsat_search <- function(min_date = "2017-03-01", max_date = Sys.Date(),
         stop("Error: No rows found for given row path combination")
       }
     }
-    print(paste("Total rows :",nrow(aws_list)))
-    rm(world_rowpath)
+    cat(paste("Total rows :",nrow(aws_list), "\n"))
     return(aws_list)
   }
 
