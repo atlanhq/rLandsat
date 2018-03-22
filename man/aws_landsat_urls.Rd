@@ -5,7 +5,7 @@
 \title{Getting Landsat8 Raw Files URL from AWS index html Files}
 \usage{
 aws_landsat_urls(index_html_url, TIFtxtOnly = TRUE, band = NULL,
-  dest_file = NULL, scrape = FALSE)
+  scrape = FALSE)
 }
 \arguments{
 \item{index_html_url}{index.html url for which download urls are needed}
@@ -13,8 +13,6 @@ aws_landsat_urls(index_html_url, TIFtxtOnly = TRUE, band = NULL,
 \item{TIFtxtOnly}{logical. To download only the TIF and txt files or all files}
 
 \item{band}{vector for required bands number}
-
-\item{dest_file}{the destination location}
 
 \item{scrape}{if the urls should be scraped from index.html or created using the pattern}
 }

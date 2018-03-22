@@ -3,7 +3,6 @@
 #' @param index_html_url index.html url for which download urls are needed
 #' @param TIFtxtOnly logical. To download only the TIF and txt files or all files
 #' @param band vector for required bands number
-#' @param dest_file the destination location
 #' @param scrape if the urls should be scraped from index.html or created using the pattern
 #'
 #' @return dataframe with download urls
@@ -12,7 +11,7 @@
 #' @examples index_url = "https://s3-us-west-2.amazonaws.com/landsat-pds/c1/L8/148/047/LC08_L1TP_148047_20170404_20170414_01_T1/index.html"
 #' temp = aws_landsat_urls(index_url, dest_file = getwd())
 
-aws_landsat_urls <- function(index_html_url, TIFtxtOnly = TRUE, band = NULL, dest_file = NULL, scrape = FALSE){
+aws_landsat_urls <- function(index_html_url, TIFtxtOnly = TRUE, band = NULL, scrape = FALSE){
   require(rvest)
   url_all = list()
   if(!is.null(band)){
