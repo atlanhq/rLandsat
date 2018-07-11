@@ -1,4 +1,4 @@
-# rLandsat (Acquire Landsat8 Data)
+# rLandsat (Acquire Landsat8 Data) <img src="man/logo.png" align="right" />
 R Package to make Landsat8 data accessible and to unlock the mystery.
 Easily search and download landsat8 data from R (internally using sat-api, espa-api and AWS Landsat8 data)
 
