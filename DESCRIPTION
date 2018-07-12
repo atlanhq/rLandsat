@@ -18,5 +18,4 @@ Imports:
     jsonlite,
     dplyr,
     readr,
-    stringr,
-    data.table
+    stringr
