@@ -44,15 +44,15 @@ espa_list_orders <- function(min_date = NULL, max_date = NULL,  host = 'https://
     return(NULL)
   }
   list_url = paste0(host, "list-orders")
-  result = tryCatch(GET(list_url, authenticate(username, password)), error = function(e) FALSE)
+  result = tryCatch(httr::GET(list_url, httr::authenticate(username, password)), error = function(e) FALSE)
   if(is.logical(result)){
-    cat(paste0("API Connection Failed for order,",order_id[i]))
+    cat(paste0("API Connection Failed for order\n"))
     return(NULL)
   }
   if(result$status_code == 200){
-    result_list = fromJSON(rawToChar(result$content))
+    result_list = jsonlite::fromJSON(rawToChar(result$content))
   } else {
-    cat(paste0("API Connection Failed for order,",order_id[i]))
+    cat(paste0("Error:",result$status_code, "\nAPI Connection Failed for order\n"))
     return(NULL)
   }
 
@@ -76,13 +76,13 @@ espa_list_orders <- function(min_date = NULL, max_date = NULL,  host = 'https://
 
 # sat-api-express wrapper for landsat8
 satapilsat8 <- function(date_from = "2013-04-01", date_to = Sys.Date(), limit = 10000, path = NULL, row = NULL){
-  suppressWarnings(suppressMessages(library(httr)))
+#  suppressWarnings(suppressMessages(library(httr)))
   if(is.null(row) | is.null(path)){
     link = paste0('https://api.developmentseed.org/satellites/?limit=',limit,'$satellite_name=landsat-8&date_from=',date_from,'&date_to=',date_to)
-    result = GET(link)
+    result = httr::GET(link)
   } else{
     link = paste0('https://api.developmentseed.org/satellites/?limit=',limit,'$satellite_name=landsat-8&date_from=',date_from,'&date_to=',date_to,'&path=',path,'&row=',row)
-    result = GET(link)
+    result = httr::GET(link)
   }
   if(result$status_code != 200){
     print(paste("Error:",result$status_code))
@@ -109,11 +109,11 @@ product_date = function(product_id){
 
 # function to GET dataframe after GET
 GEToutput <- function(result, output_col = "results", isJSON = TRUE){
-  suppressWarnings(suppressMessages(library(jsonlite)))
+#  suppressWarnings(suppressMessages(library(jsonlite)))
   if(isJSON){
-    result = fromJSON(rawToChar(result$content))
+    result = jsonlite::fromJSON(rawToChar(result$content))
     if(!is.null(output_col)){
-      result = flatten(as.data.frame(result[output_col]))
+      result = jsonlite::flatten(as.data.frame(result[output_col]))
     }
   } else{
     result = rawToChar(result$content)
@@ -123,7 +123,7 @@ GEToutput <- function(result, output_col = "results", isJSON = TRUE){
 
 # to standardize colnames
 StandardColnames <- function (dataframe){
-  suppressWarnings(suppressMessages(library(stringr)))
+ # suppressWarnings(suppressMessages(library(stringr)))
   colnames(dataframe) = gsub("([[:upper:]])([[:upper:]][[:lower:]])",
                              "\\\\1\\\\_\\\\2", colnames(dataframe))
   colnames(dataframe) = gsub("([[:lower:]])([[:upper:]])",
@@ -131,6 +131,6 @@ StandardColnames <- function (dataframe){
   colnames(dataframe) = gsub("[[:punct:]]|\\\\s", "_", colnames(dataframe))
   colnames(dataframe) = gsub("\\\\_+", "_", colnames(dataframe))
   colnames(dataframe) = gsub("\\\\_$|^\\\\_", "", colnames(dataframe))
-  colnames(dataframe) = str_to_lower(colnames(dataframe))
+  colnames(dataframe) = stringr::str_to_lower(colnames(dataframe))
   return(dataframe)
 }
