@@ -4,9 +4,7 @@ Title: Landsat Data Complete Download Process
 Version: 0.1.0
 Author: Himanshu Sikaria(SocialCops)
 Maintainer: Himanshu Sikaria<himanshu.sikaria@socialcops.com>
-Description: 1. Search for Landsat8 products from AWS S3, sat-api (DevelopmentSeed)
-    2. Get Download URLs: Wrapper for espa-api to place the order or Raw files from AWS S3
-    3. Download the files using the urls
+Description: Search and Download for Landsat data easily using the APIs built by Development Seed and ESPA.
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
@@ -14,6 +12,7 @@ RoxygenNote: 6.0.1
 Depends: R (>= 3.1.2)
 Suggests: testthat
 Imports: 
+    RCurl,
     svMisc,
     httr,
     jsonlite,
