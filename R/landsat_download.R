@@ -8,6 +8,7 @@
 #'
 #' @return vector of failed urls
 #' @details Caution: use entity_id and folder_wise ONLY in case of downloading the individual bands (like from AWS). Get the downlaod urls from espa functions in this library. View the demo
+#' @import "utils"
 #' @export
 #'
 #' @examples landsat_download("https://edclpdsftp.cr.usgs.gov/orders/espa-order_id1.tar.gz", dest_file = getwd())
