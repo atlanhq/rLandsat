@@ -1,7 +1,7 @@
 # to cancel orders
 ## returns a vector of order ids which could NOT be cancelled
 #' Cancel Landst espa Orders
-#' @description this will cancel the order placed earlier through espa_order()
+#' @description This will cancel the order placed earlier through \code{\link{espa_order}}
 #' @param order_id vector of order ids to be cancelled
 #' @param host the api call host. Default set to espa v1 web api
 #' @param username default NULL, which fetches the username from the global environment. If defined otherwise, will run the api with the provided details
