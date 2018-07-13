@@ -31,14 +31,17 @@ If you encounter a bug, please file an issue with steps to reproduce it on [gith
 
 ## Additional Details
 ### About Landsat8 ###
-Landsat 8 - Operational Land Imager (OLI) and Thermal Infrared Sensor (TIRS) imagery consist of nine spectral bands with a spatial resolution of 30 meters for Bands 1 to 7 and 9. New band 1 (ultra-blue) is useful for coastal and aerosol studies. Band 9 is useful for cirrus cloud detection. The resolution for Band 8 (panchromatic) is 15 meters. Thermal bands 10 and 11 are useful in providing more accurate surface temperatures and are collected at 100 meters.
+Landsat 8 Operational Land Imager (OLI) and Thermal Infrared Sensor (TIRS) imagery consist of nine spectral bands with a spatial resolution of 30 meters for Bands 1 to 7, and 9. New band 1 (ultra-blue) is useful for coastal and aerosol studies. Band 9 is useful for cirrus cloud detection. The resolution for Band 8 (panchromatic) is 15 meters. Thermal bands 10 and 11 are useful in providing more accurate surface temperatures and are collected at 100 meters.
 
-Watch how the data is captured [here](https://www.youtube.com/watch?v=xBhorGs8uy8)</br>
-Read about the 120+ applications of Landsat8 data [here](http://grindgis.com/blog/120-landsat-data-applications)
+Landsat offers this data through variety of data products depending upon data quality and level of processing, like SR (Surface Reflectance), TOA (Top of Atmosphere), BT (Brightness Temperature), Spectral Indices).
+
+This data is available with EROS Science Processing Architecture (ESPA), AWS S3, and Google Cloud Storage. Using data from ESPA is recommended as they have made available Collection-1 data for even Landsat 1. AWS S3 and Google Cloud Storage, on the other hand, have Pre-Collection data till January 1, 2017, and Collection-1 data post that. This library considers this change.
 
 **You might want to read :**
-* About the Landsat Collection (Pre-Collection and Collection-1) [here](https://landsat.usgs.gov/landsat-collections). This impacts the data on AWS S3/Google Cloud Storage, as they have pre-collection data pre 5/1/2017 and collection-1 post that. Hence using data from ESPA is suggested as they have only Collection-1 data for the entire time period. This library considers this change.
-* About the different products available in ESPA (eg, SR (Surface Reflectance), TOA (Top of Atmosphere), BT (Brightness Temperature), Spectral Indices) and why using these are better than the digital numbers (DN) prodived by AWS S3/Google Cloud Storage. Watch [this](https://www.youtube.com/watch?v=R5_XHqlNDc4) video to understand the difference.
+* Read about the Landsat Collection (Pre-Collection and Collection-1) [here](https://landsat.usgs.gov/landsat-collections).
+* Watch [this](https://www.youtube.com/watch?v=R5_XHqlNDc4) video to understand the difference between the data on ESPA and that on AWS S3/Google Cloud Storage, and why using ESPA is preferred over the digital numbers (DN) provided by the former.  
+* Watch how the data is captured [here](https://www.youtube.com/watch?v=xBhorGs8uy8)</br>
+* Read about the 120+ applications of Landsat8 data [here](http://grindgis.com/blog/120-landsat-data-applications)
 
 ### What can I do?
 * **landsat_search** Get landsat8 product IDs for certain time period and country (or define your own path and row). This search is being done using sat-api (developed by DevelopmentSeed, this also gives the download urls for AWS S4) or the AWS Landsat master meta file based on your input.
