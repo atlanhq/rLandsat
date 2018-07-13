@@ -1,7 +1,7 @@
 # to cancel orders
 ## returns a vector of order ids which could NOT be cancelled
 #' Cancel Landst espa Orders
-#' @description this will cancel the order placed earlier,
+#' @description this will cancel the order placed earlier through espa_order()
 #' @param order_id vector of order ids to be cancelled
 #' @param host the api call host. Default set to espa v1 web api
 #' @param username default NULL, which fetches the username from the global environment. If defined otherwise, will run the api with the provided details
@@ -12,10 +12,10 @@
 #'
 #' @examples # ==== NOT RUN ======
 #' # input the credentials, if not defined earlier
-#' espa_creds("your_espaname", "secret_password")
+#' # espa_creds("your_espaname", "secret_password")
 #'
 #' # Cancel orders
-#' espa_cancel_order(order_id = c("your_order_id1", "your_order_id2"))
+#' # espa_cancel_order(order_id = c("your_order_id1", "your_order_id2"))
 #'
 
 espa_cancel_order <- function(order_id, host = 'https://espa.cr.usgs.gov/api/v1/', username = NULL, password = NULL){

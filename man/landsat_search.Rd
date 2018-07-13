@@ -19,14 +19,14 @@ landsat_search(min_date = "2017-03-01", max_date = Sys.Date(),
 
 \item{row_master}{vector of row numbers corresponding to the path number. Check details}
 
-\item{source}{search source. Default and recommended is sat-api. Available options: "sat-api", "aws".}
+\item{source}{search source. Default and recommended is sat-api. Available options: "sat-api", "aws". For AWS it will return the Pre-Collection Scene IDs pre March 2017.}
 }
 \value{
 dataframe with the product ids and the meta information (cloud cover, path/row) along with it.
 If source is sat-api then raw value download links from all the sources (AWS, Google, ESPA) are also outputted
 }
 \description{
-Search for landsat8 product ids using country name or row/path
+Search for landsat8 product IDs for a geography (country name or row/path) and a specific time duration.
 }
 \details{
 for path_master and row_master input is in a pair. For example: If we want path/row of :  (147,47) , (147,48) then path_master = c(147, 147), row_master = c(47,48)

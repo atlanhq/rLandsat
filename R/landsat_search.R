@@ -1,12 +1,12 @@
 # landsat search
 #' Search for Landsat8 Products IDs
-#' @description Search for landsat8 product ids using country name or row/path
+#' @description Search for landsat8 product IDs for a geography (country name or row/path) and a specific time duration.
 #' @param min_date the start date of the products. Format should be \%Y-\%m-\%d
 #' @param max_date the end date of the products. Format should be \%Y-\%m-\%d
 #' @param country the country for which product ids is required. NULL if search is not on country. List of available countries are available at data(world_rowpath)
 #' @param path_master vector of path numbers
 #' @param row_master vector of row numbers corresponding to the path number. Check details
-#' @param source search source. Default and recommended is sat-api. Available options: "sat-api", "aws".
+#' @param source search source. Default and recommended is sat-api. Available options: "sat-api", "aws". For AWS it will return the Pre-Collection Scene IDs pre March 2017.
 #'
 #' @return dataframe with the product ids and the meta information (cloud cover, path/row) along with it.
 #' If source is sat-api then raw value download links from all the sources (AWS, Google, ESPA) are also outputted

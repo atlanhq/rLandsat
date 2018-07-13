@@ -1,5 +1,6 @@
 #' Check Available Products for given Product-IDs
 #'
+#' @description For a set of product IDs, check which products (like, sr, toa, spectral indices) are available to download
 #' @param input_ids vector of product ids for which available products are needed
 #' @param host the api call host. Default set to espa v1 web api
 #' @param username default NULL, which fetches the username from the global environment. If defined otherwise, will run the api with the provided details

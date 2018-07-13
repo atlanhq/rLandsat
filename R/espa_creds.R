@@ -1,5 +1,5 @@
 #' Input and Save esap-api Credentials
-#' @description Save the api credentials as global environment to be used in other functions in rLandsat. This is a pre-requisite for running any of the other functions requiring espa-api
+#' @description Save the ESPA login credentials as global environment to be used in other functions in rLandsat. This is a pre-requisite for running any of the other functions requiring espa-api
 #' @param username espa account's username
 #' @param password espa account's password corresponding to the username
 #' @details If you do not have an account with espa, please create one here: https://ers.cr.usgs.gov/register

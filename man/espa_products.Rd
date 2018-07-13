@@ -24,7 +24,7 @@ a list :
 Returns NULL if the espa credentials are not  incorrect or the api is unresponsive
 }
 \description{
-Check Available Products for given Product-IDs
+For a set of product IDs, check which products (like, sr, toa, spectral indices) are available to download
 }
 \examples{
 # input the credentials, if not defined earlier

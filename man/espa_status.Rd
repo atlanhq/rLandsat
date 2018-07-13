@@ -29,7 +29,7 @@ a list
 \item{wrong_order_id}{vector of order_ids for which the API failed}
 }
 \description{
-Get Landsat Order Status and Download URL
+For a successful order placed, get the status of each of the product ID requested in that order id. Once the order is complete, also get the corresponding URLs for the product IDs.
 }
 \details{
 if order_id, min_date, max_date are NULL, then will run on all the order ids available till date
@@ -38,7 +38,7 @@ if order_id, min_date, max_date are NULL, then will run on all the order ids ava
 # input the credentials, if not defined earlier
 espa_creds("your_espaname", "secret_password")
 
-# getting all the order's status
+# getting all the orders' status
 result = espa_status()
 result = result$order_details # getting the dataframe from the list
 }

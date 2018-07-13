@@ -15,7 +15,7 @@ espa_creds(username, password)
 NULL. Just saves the username and password in .Reviron
 }
 \description{
-Save the api credentials as global environment to be used in other functions in rLandsat. This is a pre-requisite for running any of the other functions requiring espa-api
+Save the ESPA login credentials as global environment to be used in other functions in rLandsat. This is a pre-requisite for running any of the other functions requiring espa-api
 }
 \details{
 If you do not have an account with espa, please create one here: https://ers.cr.usgs.gov/register

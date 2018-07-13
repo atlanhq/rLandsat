@@ -1,10 +1,5 @@
-# to get the order status and if completed then download url
-## returns NULL if wrong username password or if no orders found
-## returns a list:
-# order_details : a dataframe with order status and download links
-# wrong_order_id : vector of order_ids for which the API failed
 #' Get Landsat Order Status and Download URL
-#'
+#' @description For a successful order placed, get the status of each of the product ID requested in that order id. Once the order is complete, also get the corresponding URLs for the product IDs.
 #' @param order_id vector of order ids for which status and download url is needed
 #' @param min_date if order_id is NULL, define the starting date from which order ids need to be fetched
 #' @param max_date if order_id is NULL, define the ending date till which order ids need to be fetched
@@ -21,7 +16,7 @@
 #' @examples # input the credentials, if not defined earlier
 #' espa_creds("your_espaname", "secret_password")
 #'
-#' # getting all the order's status
+#' # getting all the orders' status
 #' result = espa_status()
 #' result = result$order_details # getting the dataframe from the list
 

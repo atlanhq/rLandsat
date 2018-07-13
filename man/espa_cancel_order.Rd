@@ -20,14 +20,14 @@ espa_cancel_order(order_id, host = "https://espa.cr.usgs.gov/api/v1/",
 vector of order ids which could NOT be cancelled
 }
 \description{
-this will cancel the order placed earlier,
+this will cancel the order placed earlier through espa_order()
 }
 \examples{
 # ==== NOT RUN ======
 # input the credentials, if not defined earlier
-espa_creds("your_espaname", "secret_password")
+# espa_creds("your_espaname", "secret_password")
 
 # Cancel orders
-espa_cancel_order(order_id = c("your_order_id1", "your_order_id2"))
+# espa_cancel_order(order_id = c("your_order_id1", "your_order_id2"))
 
 }
