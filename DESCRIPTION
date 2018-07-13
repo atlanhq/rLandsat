@@ -2,10 +2,15 @@ Package: rLandsat
 Type: Package
 Title: Landsat Data Complete Download Process 
 Version: 0.1.0
-Author: Himanshu Sikaria(SocialCops)
+Author: Himanshu Sikaria - SocialCops [aut, cre],
+  Shilpa Arora [rev],
+  Akash Tandon [rev],
+  Kriti Kathuria [rev]
 Maintainer: Himanshu Sikaria<himanshu.sikaria@socialcops.com>
-Description: Search and Download for Landsat data easily using the APIs built by Development Seed and ESPA.
-License: GPL-3
+Description: Easily acquire landsat, a remote sensing satellite, data from R. Search for landsat scenes and download the Landsat data using this library which uses APIs built by Development Seed and ESPA.
+License: GPL-3 | file LICENSE
+URL: https://github.com/socialcopsdev/rLandsat
+BugReports: https://github.com/socialcopsdev/rLandsat/issues
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.0.1
