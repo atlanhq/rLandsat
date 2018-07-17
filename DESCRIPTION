@@ -7,7 +7,7 @@ Author: Himanshu Sikaria - SocialCops [aut, cre],
   Akash Tandon [rev],
   Kriti Kathuria [rev]
 Maintainer: Himanshu Sikaria<himanshu.sikaria@socialcops.com>
-Description: Easily acquire landsat, a remote sensing satellite, data from R. Search for landsat scenes and download the Landsat data using this library which uses APIs built by Development Seed and ESPA.
+Description: Easily acquire Landsat, a remote sensing satellite, data from R. Search for Landsat scenes and download the Landsat data using this library which uses API built by Development Seed and U.S. Geological Survey.
 License: GPL-3 | file LICENSE
 URL: https://github.com/socialcopsdev/rLandsat
 BugReports: https://github.com/socialcopsdev/rLandsat/issues
