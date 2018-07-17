@@ -1,11 +1,11 @@
-# rLandsat <img src="man/logo.png" align="right" />
+# rLandsat <img src="https://i.imgur.com/btZP6vS.png" align="right" />
 Acquire Landsat8 Data: R Package to make Landsat8 data accessible and to unlock the mystery.
 
 ## Overview
 
 rLandsat makes it easy to search for Landsat8 product IDs, place an order on USGS-ESPA and download the data along with the meta information in the perfect format from R. Internally uses a combination of sat-api, espa-api and AWS S3 Landsat8 data.
 
-<img src="wiki/rLandsat_exp.png" align="centre" />
+<img src="https://i.imgur.com/cmjtegG.png" align="centre" />
 
   - `landsat_search()` search product IDs (and AWS/Google download links) based on time and geography
   - `espa_product()` get list of available products for product ids
