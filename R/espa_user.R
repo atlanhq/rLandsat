@@ -9,10 +9,13 @@
 #' @return logical. TRUE if user is active, FALSE if credentials are wrong or API is unresponsive
 #' @export
 #' @import "httr" "jsonlite" "dplyr" "readr" "stringr"
-#' @examples # inputting the credentials
-#' espa_creds("your_espaname", "secret_password")
-#' # checking if the user is valid
-#' espa_user() # returns FALSE
+#' @examples
+#' ###### NOT RUN ######
+#' ## inputting the credentials
+#' # espa_creds("your_espaname", "secret_password")
+#' ## checking if the user is valid
+#' # espa_user() # returns FALSE
+#' #####################
 #'
 espa_user <- function(host = 'https://espa.cr.usgs.gov/api/v1/', username = NULL, password = NULL){
   # getting the username and password from global environment if not specified

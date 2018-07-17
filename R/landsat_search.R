@@ -15,8 +15,10 @@
 #'
 #' @export
 #' @import "httr" "jsonlite" "dplyr" "readr" "stringr"
-#' @examples result = landsat_search(min_date = "2017-03-01", max_date = "2017-03-03", country = "India")
-#'
+#' @examples
+#' ##### NOT RUN #####
+#' # result = landsat_search(min_date = "2017-03-01", max_date = "2017-03-03", country = "India")
+#' ##################
 
 landsat_search <- function(min_date = "2017-03-01", max_date = Sys.Date(),
                            country = NULL, path_master = NULL,

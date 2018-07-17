@@ -56,17 +56,19 @@ a list
 Places an order in espa for the specified product ids and their products. All the products must be available for the product IDs mentioned for a successful order
 }
 \examples{
-# input the credentials, if not defined earlier
-espa_creds("your_espaname", "secret_password")
-
-# saving the product ids as a vector
-product_ids = c("LC08_L1TP_148047_20180202_20180220_01_T1",
-               "LC08_L1TP_134040_20180115_20180120_01_T1")
-
- # saving the required products as a vector
- prod = c("sr", "sr_ndvi")
-
- # placing the order
- result = espa_order(input_ids = product_ids, product = prod, projection = "lonlat")
- orderid = result$order_details$orderid # storing the order id for future reference
+######## NOT RUN #######
+## input the credentials, if not defined earlier
+# espa_creds("your_espaname", "secret_password")
+#
+## saving the product ids as a vector
+# product_ids = c("LC08_L1TP_148047_20180202_20180220_01_T1",
+#                 "LC08_L1TP_134040_20180115_20180120_01_T1")
+#
+## saving the required products as a vector
+# prod = c("sr", "sr_ndvi")
+#
+## placing the order
+# result = espa_order(input_ids = product_ids, product = prod, projection = "lonlat")
+# orderid = result$order_details$orderid # storing the order id for future reference
+############################
 }

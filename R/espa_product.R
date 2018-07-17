@@ -12,17 +12,20 @@
 #' Returns NULL if the espa credentials are not  incorrect or the api is unresponsive
 #' @export
 #'
-#' @examples # input the credentials, if not defined earlier
-#' espa_creds("your_espaname", "secret_password")
-#'
-#' # saving the product ids as a vector
-#' product_ids = c("LC08_L1TP_148047_20180202_20180220_01_T1",
-#'                "LC08_L1TP_134040_20180115_20180120_01_T1",
-#'                "invalid_id")
-#'
-#' # running function to get the available products
-#' result = espa_products(input_ids = product_ids)
-#' result = result$master # saving the dataframe from the list
+#' @examples
+#' ######### NOT RUN #######
+#' ## input the credentials, if not defined earlier
+#' # espa_creds("your_espaname", "secret_password")
+#' #
+#' ## saving the product ids as a vector
+#' # product_ids = c("LC08_L1TP_148047_20180202_20180220_01_T1",
+#' #              "LC08_L1TP_134040_20180115_20180120_01_T1",
+#' #               "invalid_id")
+#' #
+#' ## running function to get the available products
+#' # result = espa_products(input_ids = product_ids)
+#' # result = result$master # saving the dataframe from the list
+#' ##########################
 
 espa_products <- function(input_ids, host = 'https://espa.cr.usgs.gov/api/v1/', username = NULL, password = NULL){
   # getting the username and password from global environment if not specified
