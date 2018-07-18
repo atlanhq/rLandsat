@@ -30,7 +30,14 @@ espa_user <- function(host = 'https://espa.cr.usgs.gov/api/v1/', username = NULL
     return(result)
   }
   # getting the role of user specified
-  user_role = fromJSON(rawToChar(result$content))$roles
+  tryCatch({
+    user_role = fromJSON(rawToChar(result$content))$roles
+  }, error = function(err){
+    cat("Status Code from ESPA API:",result$status_code,"\n")
+    print(result)
+    stop("Cannot Connect to ESPA APIs. Please check https://espa.cr.usgs.gov/api/v1/user for details\n")
+  })
+
   if(length(user_role)>0){
     result = fromJSON(rawToChar(result$content))$roles == "active"
     cat(paste("The user", username, " is", user_role,"\n"))
