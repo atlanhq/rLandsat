@@ -40,7 +40,7 @@ This data is available with EROS Science Processing Architecture (ESPA), AWS S3 
 **Here are some additional resources you might want to read:**
 * Read about the Landsat Collection (Pre Collection and Collection 1) [here](https://landsat.usgs.gov/landsat-collections).
 * Watch [this](https://www.youtube.com/watch?v=R5_XHqlNDc4) video to understand the difference between the data on ESPA and that on AWS S3/Google Cloud Storage, and why using ESPA is preferred over AWS' Digital Numbers (DN).  
-* Watch how the data is captured [here](https://www.youtube.com/watch?v=xBhorGs8uy8)
+* Watch how the data is captured [here](https://www.youtube.com/watch?v=xBhorGs8uy8).
 * Read about over 120 applications of Landsat 8 data [here](http://grindgis.com/blog/120-landsat-data-applications).
 
 ### What can I do on rLandsat?
