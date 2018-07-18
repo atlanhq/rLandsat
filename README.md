@@ -3,7 +3,7 @@ Acquire Landsat 8 Data: R Package to make Landsat 8 data accessible and help unl
 
 ## Overview
 
-rLandsat makes it easy to search for Landsat8 product IDs, place an order on USGS-ESPA and download the data along with the meta information in the perfect format from R. Internally, it uses a combination of sat-api, espa-api and AWS S3 Landsat 8 data.
+rLandsat makes it easy to search for Landsat8 product IDs, place an order on USGS-ESPA and download the data along with the meta information in the perfect format from R. Internally, it uses a combination of sat-api, espa-api and AWS S3 Landsat 8 metadata.
 
 <img src="https://i.imgur.com/cmjtegG.png" align="centre" />
 
@@ -35,7 +35,7 @@ Landsat 8 Operational Land Imager (OLI) and Thermal Infrared Sensor (TIRS) image
 
 Landsat offers this data through a variety of data products, depending on the data quality and level of processing, including SR (Surface Reflectance), TOA (Top of Atmosphere), BT (Brightness Temperature), and Spectral Indices.
 
-This data is available with EROS Science Processing Architecture (ESPA), AWS S3 and Google Cloud Storage. Using data from ESPA is recommended as they have made Collection 1 data available even for Landsat 1. AWS S3 and Google Cloud Storage, on the other hand, have Pre-Collection data until January 1, 2017, and Collection 1 data after that. This library considers that change.
+This data is available with EROS Science Processing Architecture (ESPA), AWS S3 and Google Cloud Storage. Using data from ESPA is recommended as they have made Collection 1 data available even for data before January 2017. AWS S3 and Google Cloud Storage, on the other hand, have Pre-Collection data until January 1, 2017, and Collection 1 data after that. This library considers that change.
 
 **Here are some additional resources you might want to read:**
 * Read about the Landsat Collection (Pre Collection and Collection 1) [here](https://landsat.usgs.gov/landsat-collections).
@@ -44,7 +44,7 @@ This data is available with EROS Science Processing Architecture (ESPA), AWS S3 
 * Read about over 120 applications of Landsat 8 data [here](http://grindgis.com/blog/120-landsat-data-applications).
 
 ### What can I do on rLandsat?
-* **landsat_search**: Get Landsat 8 product IDs for certain time periods and countries (or define your own path and row). This search uses sat-api (developed by DevelopmentSeed, this also gives the download urls for AWS S4) or the AWS Landsat master meta file, based on your input.
+* **landsat_search**: Get Landsat 8 product IDs for certain time periods and countries (or define your own path and row). This search uses sat-api (developed by DevelopmentSeed, this also gives the download urls for AWS S3) or the AWS Landsat master meta file, based on your input.
 
 * **espa_product**: For the specified Landsat 8 product IDs, get the products available from ESPA. This uses espa-api.
 
