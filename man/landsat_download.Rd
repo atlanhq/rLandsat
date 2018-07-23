@@ -5,7 +5,7 @@
 \title{Downlaod Landsat Files from URL}
 \usage{
 landsat_download(download_url, entity_id = NULL, folder_wise = FALSE,
-  dest_file = NULL)
+  dest_file)
 }
 \arguments{
 \item{download_url}{vector of urls to be downloaded}
@@ -26,5 +26,8 @@ Downlaod Landsat Files from URL
 Caution: use entity_id and folder_wise ONLY in case of downloading the individual bands (like from AWS). Get the downlaod urls from espa functions in this library. View the demo
 }
 \examples{
-landsat_download("https://edclpdsftp.cr.usgs.gov/orders/espa-order_id1.tar.gz", dest_file = getwd())
+# save files to the destination path provided
+## returns the index of the failed urls
+landsat_download("https://edclpdsftp.cr.usgs.gov/orders/order_id1.tar.gz", dest_file = tempdir())
+
 }

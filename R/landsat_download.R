@@ -11,22 +11,14 @@
 #' @import "utils"
 #' @export
 #'
-#' @examples landsat_download("https://edclpdsftp.cr.usgs.gov/orders/espa-order_id1.tar.gz", dest_file = getwd())
+#' @examples
+#' # save files to the destination path provided
+#' ## returns the index of the failed urls
+#' landsat_download("https://edclpdsftp.cr.usgs.gov/orders/order_id1.tar.gz", dest_file = tempdir())
+#'
 
-landsat_download <- function(download_url, entity_id = NULL, folder_wise = FALSE, dest_file = NULL){
+landsat_download <- function(download_url, entity_id = NULL, folder_wise = FALSE, dest_file){
 
-  if(is.null(dest_file)){
-    if(interactive()){
-      dest_yn = readline(prompt = "No destination folder selected. Download in the current directory? [y/n]")
-    } else {
-      dest_yn = "n"
-    }
-    if(dest_yn == "y"){
-      dest_file = getwd()
-    } else{
-      stop("Stopping. No destination file found.")
-    }
-  }
   if(!(folder_wise)){
     entity_id = rep("/", length(download_url))
   }
