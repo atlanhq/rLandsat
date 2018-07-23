@@ -17,7 +17,7 @@
 #' landsat_download("https://edclpdsftp.cr.usgs.gov/orders/order_id1.tar.gz", dest_file = tempdir())
 #'
 
-landsat_download <- function(download_url, entity_id = NULL, folder_wise = FALSE, dest_file){
+landsat_download <- function(download_url, dest_file, entity_id = NULL, folder_wise = FALSE){
 
   if(!(folder_wise)){
     entity_id = rep("/", length(download_url))
