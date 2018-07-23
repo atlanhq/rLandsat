@@ -21,5 +21,6 @@ Save the ESPA login credentials as global environment to be used in other functi
 If you do not have an account with espa, please create one here: https://ers.cr.usgs.gov/register
 }
 \examples{
+# set the espa credentials to be used by other functions
 espa_creds(username = "your_espaname", password = "secret_password")
 }

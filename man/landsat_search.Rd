@@ -32,7 +32,15 @@ Search for landsat8 product IDs for a geography (country name or row/path) and a
 for path_master and row_master input is in a pair. For example: If we want path/row of :  (147,47) , (147,48) then path_master = c(147, 147), row_master = c(47,48)
 }
 \examples{
-##### NOT RUN #####
-# result = landsat_search(min_date = "2017-03-01", max_date = "2017-03-03", country = "India")
-##################
+# define the start and end dates
+start = "2017-03-11"
+end = "2017-03-12"
+
+# Get for specific row and path
+result = landsat_search(min_date=start, max_date=end, path_master=147, row_master=48)
+\donttest{
+# Get for entire country
+ result = landsat_search(min_date=start, max_date=end, country = "India")
+}
+
 }

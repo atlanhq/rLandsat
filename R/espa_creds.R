@@ -6,7 +6,9 @@
 #' @return NULL. Just saves the username and password in .Reviron
 #' @export
 #'
-#' @examples espa_creds(username = "your_espaname", password = "secret_password")
+#' @examples
+#' # set the espa credentials to be used by other functions
+#' espa_creds(username = "your_espaname", password = "secret_password")
 espa_creds <- function(username, password){
   Sys.setenv("espa_username" = username)
   Sys.setenv("espa_password" = password)

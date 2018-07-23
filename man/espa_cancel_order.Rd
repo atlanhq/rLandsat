@@ -23,11 +23,10 @@ vector of order ids which could NOT be cancelled
 This will cancel the order placed earlier through \code{\link{espa_order}}
 }
 \examples{
-# ==== NOT RUN ======
+\dontrun{
 # input the credentials, if not defined earlier
-# espa_creds("your_espaname", "secret_password")
-
+espa_creds("your_espaname", "secret_password")
 # Cancel orders
-# espa_cancel_order(order_id = c("your_order_id1", "your_order_id2"))
-
+## return NULL as credentials not valid
+espa_cancel_order(order_id = c("your_order_id1", "your_order_id2"))}
 }

@@ -14,14 +14,14 @@
 #' @export
 #'
 #' @examples
-#' ####### NOT RUN ########
-#' ## input the credentials, if not defined earlier
-#' # espa_creds("your_espaname", "secret_password")
-#' #
-#' ## getting all the orders' status
-#' # result = espa_status()
-#' # result = result$order_details # getting the dataframe from the list
-#' ########################
+#' \dontrun{
+#' # input the credentials, if not defined earlier
+#'  espa_creds("your_espaname", "secret_password")
+#'
+#' # getting all the orders' status
+#'  result = espa_status()
+#'  # getting the dataframe from the list
+#'  result = result$order_details}
 
 espa_status <- function(order_id = NULL, min_date = NULL, max_date = NULL, getSize = FALSE,
                         host = 'https://espa.cr.usgs.gov/api/v1/', username = NULL, password = NULL){

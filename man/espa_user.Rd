@@ -21,11 +21,9 @@ logical. TRUE if user is active, FALSE if credentials are wrong or API is unresp
 To check espa credentials and if espa-api is responding. Suggest to use \code{\link{espa_creds}} function to store your credentials before running this function
 }
 \examples{
-###### NOT RUN ######
 ## inputting the credentials
-# espa_creds("your_espaname", "secret_password")
+espa_creds("your_espaname", "secret_password")
 ## checking if the user is valid
-# espa_user() # returns FALSE
-#####################
+espa_user() # returns FALSE
 
 }
