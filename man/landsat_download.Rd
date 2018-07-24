@@ -4,17 +4,17 @@
 \alias{landsat_download}
 \title{Downlaod Landsat Files from URL}
 \usage{
-landsat_download(download_url, entity_id = NULL, folder_wise = FALSE,
-  dest_file)
+landsat_download(download_url, dest_file, entity_id = NULL,
+  folder_wise = FALSE)
 }
 \arguments{
 \item{download_url}{vector of urls to be downloaded}
 
+\item{dest_file}{the destination folder where the files are to be downloaded}
+
 \item{entity_id}{product id correspoding to the urls if the downloads need to be in folder wise for AWS links}
 
 \item{folder_wise}{if the downloads need to be in folder wise for AWS links}
-
-\item{dest_file}{the destination folder where the files are to be downloaded}
 }
 \value{
 vector of failed urls

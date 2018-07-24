@@ -2,9 +2,9 @@
 #' Downlaod Landsat Files from URL
 #'
 #' @param download_url vector of urls to be downloaded
+#' @param dest_file the destination folder where the files are to be downloaded
 #' @param entity_id product id correspoding to the urls if the downloads need to be in folder wise for AWS links
 #' @param folder_wise if the downloads need to be in folder wise for AWS links
-#' @param dest_file the destination folder where the files are to be downloaded
 #'
 #' @return vector of failed urls
 #' @details Caution: use entity_id and folder_wise ONLY in case of downloading the individual bands (like from AWS). Get the downlaod urls from espa functions in this library. View the demo
