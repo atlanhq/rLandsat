@@ -1,6 +1,8 @@
 # rLandsat <img src="https://i.imgur.com/btZP6vS.png" align="right" />
 Acquire Landsat 8 Data: R Package to make Landsat 8 data accessible and help unlock its mysteries.
 
+![](http://www.r-pkg.org/badges/version/rLandsat)
+
 ## Overview
 
 rLandsat makes it easy to search for Landsat8 product IDs, place an order on USGS-ESPA and download the data along with the meta information in the perfect format from R. Internally, it uses a combination of sat-api, espa-api and AWS S3 Landsat 8 metadata.
@@ -20,9 +22,13 @@ To run any of the functions starting with `espa_`, you need valid login credenti
 ## Installation
 
 ``` r
-# Install the latest version from GitHub:
+# Install the CRAN version
+install.packages("rLandsat")
+
+# Install the latest dev version from GitHub:
 install.packages("devtools")
 devtools::install_github("socialcopsdev/rLandsat")
+
 # Load the library
 library(rLandsat)
 ```
