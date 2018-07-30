@@ -1,7 +1,7 @@
 # rLandsat <img src="https://i.imgur.com/btZP6vS.png" align="right" />
 Acquire Landsat 8 Data: R Package to make Landsat 8 data accessible and help unlock its mysteries.
 
-![](http://www.r-pkg.org/badges/version/rLandsat)
+![](https://travis-ci.org/socialcopsdev/rLandsat.svg?branch=master) ![](http://www.r-pkg.org/badges/version/rLandsat)
 
 ## Overview
 
