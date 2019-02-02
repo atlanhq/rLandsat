@@ -19,7 +19,7 @@ landsat_search(min_date = "2017-03-01", max_date = Sys.Date(),
 
 \item{row_master}{vector of row numbers corresponding to the path number. Check details}
 
-\item{source}{search source. Default and recommended is sat-api. Available options: "sat-api", "aws". For AWS it will return the Pre-Collection Scene IDs pre March 2017.}
+\item{source}{search source. Default and recommended is sat-api. Available options: "sat-api", "aws", "usgs". For AWS it will return the Pre-Collection Scene IDs pre March 2017.}
 }
 \value{
 dataframe with the product ids and the meta information (cloud cover, path/row) along with it.

@@ -6,7 +6,7 @@
 #' @param country the country for which product ids is required. NULL if search is not on country. List of available countries are available at data(world_rowpath)
 #' @param path_master vector of path numbers
 #' @param row_master vector of row numbers corresponding to the path number. Check details
-#' @param source search source. Default and recommended is sat-api. Available options: "sat-api", "aws". For AWS it will return the Pre-Collection Scene IDs pre March 2017.
+#' @param source search source. Default and recommended is sat-api. Available options: "sat-api", "aws", "usgs". For AWS it will return the Pre-Collection Scene IDs pre March 2017.
 #'
 #' @return dataframe with the product ids and the meta information (cloud cover, path/row) along with it.
 #' If source is sat-api then raw value download links from all the sources (AWS, Google, ESPA) are also outputted
@@ -102,7 +102,70 @@ landsat_search <- function(min_date = "2017-03-01", max_date = Sys.Date(),
       }
     }
     return(df)
-  } else{
+  } else if(source == "usgs"){
+
+
+    temp = list.files(path = tempdir(), pattern = "LANDSAT_8_C1*", full.names = T)
+    if(length(temp) == 1){
+      cat("getting pre-downloaded data from usgs\n")
+      usgs_list <- readr::read_csv(gzfile(temp))
+    } else{
+      temp <- tempfile(pattern = "LANDSAT_8_C1")
+      cat("getting meta data from USGS\n")
+      download.file("https://landsat.usgs.gov/landsat/metadata_service/bulk_metadata_files/LANDSAT_8_C1.csv.gz", destfile = temp)
+      usgs_list <- readr::read_csv(gzfile(temp))
+    }
+    usgs_list$date = as.Date(usgs_list$acquisitionDate)
+    usgs_list = usgs_list[which(usgs_list$date >= as.Date(min_date) & usgs_list$date <= as.Date(max_date)),]
+    usgs_list = StandardColnames(usgs_list)
+    usgs_list$location_id = paste(usgs_list$path,usgs_list$row, sep = "-")
+    # ====== subsetting for country selected, if any ======
+    if(!is.null(country)){
+      # read file with country and row-path combination
+      #data("world_rowpath", envir = environment(landsat_search))
+      country_rp = world_rowpath
+      c_row = which(stringr::str_to_lower(country_rp$ctry_name) %in% stringr::str_to_lower(country))
+      # if country not found
+      if(length(c_row) == 0){
+        # cleaning country
+        country_rp$ctry_name = gsub("^Federal\\sRepublic\\sof\\s|^Republic\\sof\\s","", country_rp$ctry_name)
+        c_row = which(stringr::str_to_lower(country_rp$ctry_name) %in% stringr::str_to_lower(country))
+      }
+      # if still no country found
+      if(length(c_row) == 0){
+        if(country == "All" | country == "all"){
+          c_row = 1:nrow(country_rp)
+        } else{
+          stop("Error: Country not found")
+        }
+      }
+      # final aws subset for the c
+      country_rp = country_rp[c_row,]
+      country_rp = StandardColnames(country_rp)
+      country_rp$location_id = paste(country_rp$path,country_rp$row, sep = "-")
+      country_rp$location_id = paste(country_rp$path,country_rp$row, sep = "-")
+
+      usgs_row = which(usgs_list$location_id %in% country_rp$location_id)
+      if(length(usgs_row)>0){
+        usgs_list = usgs_list[usgs_row,]
+      } else {
+        stop("Error: No rows found")
+      }
+    } else if(!is.null(path_master) & length(row_master)>0){
+      row_path = paste0(path_master,"-",row_master)
+      # if no country selected and row_path combination input
+      usgs_row = which(usgs_list$location_id %in% row_path)
+      if(length(usgs_row)>0){
+        usgs_list = usgs_list[usgs_row,]
+      } else {
+        stop("Error: No rows found for given row path combination")
+      }
+    }
+    cat(paste("Total rows :",nrow(usgs_list), "\n"))
+    return(usgs_list)
+
+
+  }else{
     if((as.Date(min_date) < as.Date("2017-03-01")) & (as.Date(max_date) < as.Date("2017-03-01"))){
       # If entire data before Collection
       temp = list.files(path = gsub("(.*\\/)(.*)","\\1",tempfile()), pattern = "preaws*", full.names = T)
