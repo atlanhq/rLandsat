@@ -98,4 +98,4 @@ landsat_download(download_url = downurl$product_dload_url, dest_file = getwd())
 
 Cheers to open data :blush:
 
-<img src="https://i.ibb.co/wcQJGBX/This-project-is-powered-by-Atlan-Labs.png" align="centre" />
+<img src="http://i65.tinypic.com/9h4ajs.png" align="centre" />
