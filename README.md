@@ -1,7 +1,7 @@
 # rLandsat <img src="https://i.imgur.com/btZP6vS.png" align="right" />
 Acquire Landsat 8 Data: R Package to make Landsat 8 data accessible and help unlock its mysteries.
 
-![](https://travis-ci.org/socialcopsdev/rLandsat.svg?branch=master) ![](http://www.r-pkg.org/badges/version/rLandsat) ![](https://cranlogs.r-pkg.org/badges/rLandsat)
+![](https://travis-ci.org/socialcopsdev/rLandsat.svg?branch=master)
 
 ## Overview
 
@@ -27,13 +27,13 @@ install.packages("rLandsat")
 
 # Install the latest dev version from GitHub:
 install.packages("devtools")
-devtools::install_github("socialcopsdev/rLandsat")
+devtools::install_github("atlanhq/rLandsat")
 
 # Load the library
 library(rLandsat)
 ```
 
-If you encounter a bug, please file an issue with steps to reproduce it on [Github](https://github.com/socialcopsdev/rLandsat/issues). Please use the same for any feature requests, enhancements or suggestions.
+If you encounter a bug, please file an issue with steps to reproduce it on [Github](https://github.com/atlanhq/rLandsat/issues). Please use the same for any feature requests, enhancements or suggestions.
 
 ## Additional Details
 ### About Landsat 8 ###
@@ -97,3 +97,5 @@ landsat_download(download_url = downurl$product_dload_url, dest_file = getwd())
 * Google Server and AWS Landsat Data: http://krstn.eu/landsat-batch-download-from-google/
 
 Cheers to open data :blush:
+
+<img src="https://i.ibb.co/wcQJGBX/This-project-is-powered-by-Atlan-Labs.png" align="centre" />
