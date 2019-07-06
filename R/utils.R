@@ -79,11 +79,10 @@ satapilsat8 <- function(date_from = "2013-04-01", date_to = Sys.Date(), limit = 
 #  suppressWarnings(suppressMessages(library(httr)))
   if(is.null(row) | is.null(path)){
     link = paste0('https://api.developmentseed.org/satellites/?limit=',limit,'$satellite_name=landsat-8&date_from=',date_from,'&date_to=',date_to)
-    result = httr::GET(link)
   } else{
     link = paste0('https://api.developmentseed.org/satellites/?limit=',limit,'$satellite_name=landsat-8&date_from=',date_from,'&date_to=',date_to,'&path=',path,'&row=',row)
-    result = httr::GET(link)
   }
+  result = httr::GET(link)
   if(result$status_code != 200){
     print(paste("Error:",result$status_code))
   }
@@ -134,3 +133,6 @@ StandardColnames <- function (dataframe){
   colnames(dataframe) = stringr::str_to_lower(colnames(dataframe))
   return(dataframe)
 }
+
+
+

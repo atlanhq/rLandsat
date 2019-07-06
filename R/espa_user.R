@@ -33,7 +33,7 @@ espa_user <- function(host = 'https://espa.cr.usgs.gov/api/v1/', username = NULL
   }, error = function(err){
     cat("Status Code from ESPA API:",result$status_code,"\n")
     print(result)
-    stop("Cannot Connect to ESPA APIs. Please check https://espa.cr.usgs.gov/api/v1/user for details\n")
+    return("Cannot Connect to ESPA APIs. Please check https://espa.cr.usgs.gov/api/v1/user for details\n")
   })
 
   if(length(user_role)>0){
