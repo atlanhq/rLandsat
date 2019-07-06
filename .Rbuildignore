@@ -4,3 +4,4 @@
 ^\.git$
 ^wiki$
 ^\.httr-oauth$
+^\.travis\.yml
