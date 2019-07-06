@@ -44,7 +44,7 @@ Landsat offers this data through a variety of data products, depending on the da
 This data is available with EROS Science Processing Architecture (ESPA), AWS S3 and Google Cloud Storage. Using data from ESPA is recommended as they have made Collection 1 data available even for data before January 2017. AWS S3 and Google Cloud Storage, on the other hand, have Pre-Collection data until January 1, 2017, and Collection 1 data after that. This library considers that change.
 
 **Here are some additional resources you might want to read:**
-* Read about the Landsat Collection (Pre Collection and Collection 1) [here](https://landsat.usgs.gov/landsat-collections).
+* Read about the Landsat Collection (Pre Collection and Collection 1) [here](https://www.usgs.gov/land-resources/nli/landsat/landsat-collections).
 * Watch [this](https://www.youtube.com/watch?v=R5_XHqlNDc4) video to understand the difference between the data on ESPA and that on AWS S3/Google Cloud Storage, and why using ESPA is preferred over AWS' Digital Numbers (DN).  
 * Watch how the data is captured [here](https://www.youtube.com/watch?v=xBhorGs8uy8).
 * Read about over 120 applications of Landsat 8 data [here](http://grindgis.com/blog/120-landsat-data-applications).
