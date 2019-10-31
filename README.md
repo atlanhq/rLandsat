@@ -93,4 +93,4 @@ landsat_download(download_url = downurl$product_dload_url, dest_file = getwd())
 
 Cheers to open data :blush:
 
-<img src="https://atlan.com/img/generic/Github-opensource.png" align="centre" />
+<img src="https://atlan.com/img/generic/Github-opensource.png" align="center" />
